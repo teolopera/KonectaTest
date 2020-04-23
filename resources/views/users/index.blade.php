@@ -12,10 +12,7 @@
 	  	    </div>
             <ul class="list-unstyled components mb-5">
                 <li class="active">
-                    <a href="/clientes/create"><span class=" mr-3"></span> Crear Nuevo Cliente</a>
-                </li>
-                <li class="active">
-                    <a href="/users"><span class=" mr-3"></span> Usuarios</a>
+                    <a href="/clientes"><span class="fa fa-home mr-3"></span> Clientes</a>
                 </li>
             </ul>
     	</nav>
@@ -23,20 +20,17 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
         <div class="row">
-                @foreach($clientes as $cliente)
+                @foreach($users as $user)
         
                     <div class="col-sm">
                         <div class="card text-center mt-5" style="width: 18rem;">
                     
                             <div class="card-body">
-                                <h5 class="card-title">{{$cliente->name}}</h5>
-                                <h5 class="card-title">Teléfono: {{$cliente->phone}}</h5>
-                                <h5 class="card-text">Dirección<br/> {{$cliente->direccion}}</h5>
-                                <h5 class="card-text">Descripción<br/> {{$cliente->descdireccion}}</h5>
-                                <a href="/clientes/{{$cliente->id}}" class="btn btn-secondary">Acerca del Cliente</a>
-                                <a href="/clientes/{{$cliente->id}}/edit" class="btn btn-warning"><i class="fa fa-edit text-white"></i></a>
-                                
-                                <form method="POST" action="/clientes/{{$cliente->id}}">
+                                <h5 class="card-title">Usuario<br/>{{$user->name}}</h5>
+                                <h5 class="card-text">E-mail<br/> {{$user->email}}</h5>
+                                <a href="/users/{{$user->id}}/edit" class="btn btn-warning"><i class="fa fa-edit text-white"></i></a>
+
+                                <form method="POST" action="/users/{{$user->id}}">
                                     @method('DELETE')
                                     @csrf
 
@@ -45,7 +39,6 @@
                                     </div>
                         
                                 </form>
-                                    
                             </div>
                         </div>
                     </div>
