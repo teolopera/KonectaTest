@@ -21,6 +21,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
+
         $users = User::all(); 
 
         return view('users.index', compact('users'));
@@ -65,8 +67,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Request $request, User $user)
     {
+        $request->user()->authorizeRoles('admin');
         return view('users.edit', compact('user'));
     }
 
@@ -93,8 +96,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
+        $request->user()->authorizeRoles('admin');
+
         $user->delete();
 
         return redirect()->route('users.index');

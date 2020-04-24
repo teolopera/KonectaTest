@@ -19,13 +19,9 @@
 
     <div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar">
-				<!-- <div class="custom-menu">
-					<button type="button" id="sidebarCollapse" class="btn btn-primary">
-	        </button>
-        </div> -->
+				
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
 	  			<div class="user-logo">
-	  				<!-- <div class="img" style="background-image: url(images/logo.jpg);"></div> -->
 	  				<h3>{{ Auth::user()->name }}</h3>
 	  			</div>
 	  		</div>

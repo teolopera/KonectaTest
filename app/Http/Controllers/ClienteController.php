@@ -20,6 +20,8 @@ class ClienteController extends Controller
      */
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin','vendedor']);
+
         $clientes = Cliente::all();
 
         return view('clientes.index', compact('clientes'));
@@ -43,6 +45,14 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+
+        /* Validaciones al Formulario */
+        $validatedData = $request->validate([
+            'name' => 'required|max: 20',
+            'phone' => 'required|max: 10',
+            'direccion' => 'required|max: 15',
+        ]);
+
         $cliente = new Cliente();
 
         $cliente->name = $request->input('name');
